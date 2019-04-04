@@ -1,8 +1,8 @@
 # Markdown 简体中文与西文混排要点
 
-**Version: 0.1**
+**Version: 0.2**
 
-李笑来 2019/03
+李笑来 2019/04
 
 ---
 
@@ -10,11 +10,15 @@
 
 然而，为了统一编辑，也为了读者阅读方便，selfteaching.com 仓库中的所有文档，应尽量遵守以下要点。
 
-以下的要点是针对 Markdown 写作而整理的。Markdown 是纯文本文件，它们最终都需要被转换成 HTML 文档，而后再被浏览器渲染成格式文档。
+以下的要点是针对 Markdown 写作而整理的。Markdown 是纯文本文件，它们最终都需要被转换成 HTML 文档或者其他文件格式，比如 PDF 等等 —— 即，为方便阅读而被渲染成的格式文档。
+
+另外，本文不涉及 “文字风格建议”，只涉及**格式排版要求**。如，“表达数值变化程度时，不能使用 ‘降低了 n 倍’ 的说法，因为 ‘降低 1 倍’ 的意思是说，‘原来是 `100`，现在是 `0`’。应该用的表达方式是 “降低了百分之多少。” —— 这是文字风格（Writing Style）；而 “数值与单位之间、货币符号之间不能有空格。如 `75kg`、`$85`、`25%`。” —— 这是格式排版要求。
 
 ## 常用标点符号
 
 中英混排的文本中，除了完整的英文句子或段落之外，应全部使用全角标点符号。
+
+以下是常用中文全角标点符号：
 
 |  名称  |       符号       |                               备注                                |
 | ------ | ---------------- | ----------------------------------------------------------------- |
@@ -35,8 +39,9 @@
 **注意**
 
 1. 分隔号统一使用占据一个全角位置的 [Katakana Middle Dot](<https://en.wikipedia.org/wiki/Interpunct>)，`&#12539;`，即，`・` ；而非键盘上可以直接打出的 `&sdot;`， `·`  —— 这个分隔号是半角符号。
-
 2. 中英混排的文字中，单个英文单词需要用引号（单引号、双引号）括起来的时候，统一使用全角引号。英文句子中出现的引号，统一使用半角引号（单引号、双引号）。
+3. 句子末尾用括号加注时，句号应该在括号之外。如：`……（参见第三章）。`
+4. 句子内部的并列词汇，使用顿号 （`、`）分割，即便并列词为英文，也要如此。如：`经常使用的等宽字体包括 Menlo、Monaco、Courier New、monospace 等等`。而纯英文句子中的并列词，则要用半角逗号（`,`）分割。
 
 
 ## 空格
@@ -49,7 +54,8 @@
 4. 中英文并存的句子里，英文单词若是需要用括号括起，必须使用全角引号；如：`这就是所谓的 “过早引用”（Forward References）` —— 注意，引号和括号之间没有空格。
 5. 破折号（`——`）前后要各有一个半角空格。
 6. 省略号（`……`）前后要各有一个半角空格。
-7. 行内代码标示（Inline code）前后要有空格；如：```表达式 `a += 1` 的意思是说……```
+7. 引号、破折号、省略号之外的全角标点符号前后不能有空格。
+8. 行内代码标示（Inline code）前后要有空格；如：```表达式 `a += 1` 的意思是说……```
 
 ## 倾斜
 
@@ -75,7 +81,16 @@
 
 ## 段落
 
-段落不使用行首缩进。
+1. 段落不使用行首缩进。
+2. 段落之间用一个空行隔开。
+
+## 数字
+
+1. 阿拉伯数字一律使用半角字符。
+2. 使用半角逗号标记千分位；4 ～ 6 位的的数值，千分位的逗号是可选的，但，7 位或者 7 位以上的数值，必须有千分位的逗号。如：`2000`，`21,000,000`。针对多位小数可从小数点后从左至右添加千分位的逗号，如，`3.141,59`。
+3. 表示数值范围，使用 ` ~ `（`~`前后各有一个半角空格字符），如：`25 ～ 29`。
+4. 数值带有单位或者百分号的时候，前后两个数值都要有单位或者百分号，如：`25% ~ 29%`、` 72kg ~ 75kg`；不能是：`25 ~ 29%`、` 72 ~ 75kg`
+5. 数值与单位之间、货币符号之间不能有空格。如 `75kg`、`$85`、`25%`。
 
 ## 常用汉文数字
 
@@ -112,12 +127,14 @@ selfteaching.com 上的所有文章，首选 [CC-BY-NC-ND](<https://creativecomm
 
 ## 必读教程
 
-1. [Github: Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
-2. [Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)
+1. Github 的 Markdown 教程：[Github: Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+2. 微软的写作风格指导：[Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)
+3. Markdown 格式检查工具：[MarkdownLint](https://github.com/DavidAnson/markdownlint) —— 虽然它本身是工具，但它的文档中包含很多 Markdown 格式上的优化要求。
 
 ## 推荐使用的 Markdown 编辑器
 
-**Typora**: https://typora.io/
+- [VSCode](<https://code.visualstudio.com/>) + [Docs Authoring Pack](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-authoring-pack)
+- [Typora](https://typora.io/)
 
 ## 更多参考链接
 
