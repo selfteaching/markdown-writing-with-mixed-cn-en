@@ -55,7 +55,7 @@
 5. 破折号（`——`）前后要各有一个半角空格。
 6. 省略号（`……`）前后要各有一个半角空格。
 7. 引号、破折号、省略号之外的全角标点符号前后不能有空格。
-8. 行内代码标示（Inline code）前后要有空格；如：```表达式 `a += 1` 的意思是说……```
+8. 行内代码标示（Inline code）前后要有空格；如：```表达式 `a += 1` 的意思是说 ……```
 
 ## 倾斜
 
@@ -67,9 +67,9 @@
 
 1. 标题一概使用 `#` 符号标示。
 
-2. 由于在 GFM（Github Flavored Markdown）中，`#[0-9]+` 被自动渲染为 issue 的链接，所以，在标示标题的时候，`#`符号后应有且只有一个空格，例如：
+2. 由于在 GFM（Github Flavored Markdown）中，`/#[0-9]+/` 被自动渲染为 issue 的链接，所以，在标示标题的时候，`#` 符号后应有且只有一个空格，例如：
 
-   ```
+   ```markdown
     # 一级标题
     ## 二级标题
     ### 三级标题
@@ -129,7 +129,7 @@ selfteaching.com 上的所有文章，首选 [CC-BY-NC-ND](<https://creativecomm
 
 1. Github 的 Markdown 教程：[Github: Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
 2. 微软的写作风格指导：[Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)
-3. Markdown 格式检查工具：[MarkdownLint](https://github.com/DavidAnson/markdownlint) —— 虽然它本身是工具，但它的文档中包含很多 Markdown 格式上的优化要求。
+3. Markdown 格式检查工具：[MarkdownLint](https://github.com/DavidAnson/markdownlint) —— 虽然它本身是 lint 工具，但它的文档中包含很多 Markdown 格式上的优化要求。
 
 ## 推荐使用的 Markdown 编辑器
 
