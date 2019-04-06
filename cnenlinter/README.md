@@ -41,8 +41,8 @@ cnenlinter *.md
 也可以通过添加参数关闭 `verbose` 和 `fix-directly` 模式
 
 ```bash
-cnenlinter -v false *.md
-cnenlinter -f false *.md
+cnenlinter -v False *.md
+cnenlinter -f False *.md
 ```
 
 此程序只在 Mac OSX 环境下测试运行过。
