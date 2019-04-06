@@ -28,7 +28,7 @@ Usage: cnenlinter [OPTIONS] [FILES]...
 Options:
   -c, --config-path PATH      Specify directory that contains rules file.
   -l, --log-file TEXT         Specify file name for log, default: "log.txt".
-  -f, --fix-directly BOOLEAN  Fix file directly, rather than save to
+  -f, --fix-directly BOOLEAN  Fix file(s) directly, rather than save to
                               "/linted" directory. Default: True.
   -v, --verbose BOOLEAN       Ask permission before fix. Default: True.
   --help                      Show this message and exit.

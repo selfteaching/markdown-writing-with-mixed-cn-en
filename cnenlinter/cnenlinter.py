@@ -46,7 +46,7 @@ re_dict = {
     'fix_directly',
     default=True,
     type=click.BOOL,
-    help='Fix file directly, rather than save to "/.linted" directory. Default: True.'
+    help='Fix file(s) directly, rather than save to "/linted" directory. Default: True.'
     )
 @click.option(
     '-v',
