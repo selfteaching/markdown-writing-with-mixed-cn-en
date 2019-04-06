@@ -115,7 +115,7 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
                         logfile.writelines(log + '\n')
                     else:
                         lines_linted.append(temp)
-                        logfile.writelines('fix not accepted!\n')
+                        logfile.writelines(log + '\nfix not accepted!\n')
                 else:
                     lines_linted.append(linted.rstrip())
                     logfile.writelines(log + '\n')
