@@ -1,0 +1,134 @@
+---
+# conver half-width puntuations in Chinese sentences to full-width ones.
+# 中文前后的半角标点符号字符更换为全角标点符号
+'expected': /\1，/
+'pattern': /([\u4e00-\u9fa5”’])\,/
+---
+'expected': /\1。/
+'pattern': /([\u4e00-\u9fa5”’])\./
+---
+'expected': /\1：/
+'pattern': /([\u4e00-\u9fa5”’])\:/
+---
+'expected': /\1；/
+'pattern': /([\u4e00-\u9fa5”’])\;/
+---
+'expected': /\1？/
+'pattern': /([\u4e00-\u9fa5”’])\?/
+---
+'expected': /\1！/
+'pattern': /([\u4e00-\u9fa5”’])\!/
+---
+'expected': /\1）/
+'pattern': /([\u4e00-\u9fa5”’])\s*[\)）]/
+---
+'expected': /（\1/
+'pattern': /[（\(]\s*([\u4e00-\u9fa5‘“])/
+---
+# add space after curly quotes
+'expected': /\1 /
+'pattern': /([’”])\s*/
+---
+# remove formost space due to previous rule on curly quotes
+'expected': /\1/
+'pattern': /^\s+([‘“])/
+---  
+# fixing title to fit GFM
+# Github 上，/#+[0-9]+/ 会被自动转换成 issue 链接；
+# 所以，标题中的 `#` 之后必须有一个空格
+'expected': /\1 \2/
+'pattern': /^(#+)\s*(.*)/
+---
+# space around incline code
+# 行内代码标记符号 ` 前后应该有一个空格
+'expected': / \1\2\1 /
+'pattern': /\s*(`)(.*?)\1\s*![。，、？！：；（）《》・]/
+---
+# spaces around ascii among Chinese characters
+# 中文字符 /[\u4e00-\u9fa5]/ 之间的数字、英文单词前后要有空格
+# regex 中包含 `_\*` 是为了同时可以匹配到 markdown 标记，`**` 和 `__`
+'expected': /\1 \2/
+'pattern': /([a-zA-Z0-9%‰‱]+[_\*]{1,2})\s*([_\*]{1,2}[\u4e00-\u9fa5]+?)/        
+---
+# 作用同上，只是前后顺序不一样
+'expected': /\1 \2/
+'pattern': /([\u4e00-\u9fa5]+?[_\*]{1,2})\s*([_\*]{1,2}[a-zA-Z0-9+\-$¥]+)/        
+---
+# add space around `……` 
+# 有争议：从美观上来看，省略号之前有空格并不好看……
+# 以下的规则是：省略号前面没有空格，它后面有一个空格。
+'expected': /\1…… /
+'pattern': /([\u4e00-\u9fa5]+?)\s*([…]{1,2}|[\.。]{2,3})\s*/
+---
+# add space around `——` 
+'expected': / —— /
+'pattern': /\s*([—]{1,2})\s*/
+---
+# no leading space when `——` and `……` ahead of the line
+'expected': /——/
+'pattern': /^\s*([—…]{1,2})/
+---  
+# no space between `……` and curly quotes
+'expected': /…\1/
+'pattern': /…\s+([’”])/
+---  
+# no space between `……` and curly quotes
+'expected': /\1…/
+'pattern': /([’”])\s+…/
+---  
+# use Katakana Middle Dot
+'expected': /・/
+'pattern': /·/
+---
+# remove space between plus/minus sign and digits
+# 正负号、货币符号与数字之间不应有空格
+'expected': /\1\2/
+'pattern': /\u4e00-\u9fa5]+?.*([+\-¥$])\s+([0-9]+)/
+---
+# remove space between digits and common units
+# 数字与常用计量单位之间不应该有空格
+'expected': /\1\2/
+'pattern': /([0-9]+)\s+([bBgGmMkKtT])/
+---
+# add thousand seperators to numbers
+# regex from https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch06s12.html
+# \g<0> explanation from: https://stackoverflow.com/questions/21028917/why-g0-behaves-differently-than-0-in-re-sub
+# 为多位数字添加千位分割逗号
+# 'expected': /\g<0>,/
+# 'pattern': /[0-9](?=(?:[0-9]{3})+(?![0-9]))/
+# 慎用：它会把 url 中的长串数字加上逗号分隔符。
+# ---
+# remove spaces among Chinese characters
+# 去除中文字符之间的空格
+# (?<!^#) negative lookabehind, doesn't include /^#/
+# ... to allow space between Chinese characters in Title
+# 'expected': /\1\2/
+# 'pattern': /(?<!^#)([_\*]{0,2}[\u4e00-\u9fa5]+?[_\*]{0,2})\s+([_\*]{0,2}[\u4e00-\u9fa5]+?[_\*]{0,2})/
+'expected': /\1\2\3/
+'pattern': /([\u4e00-\u9fa5]+?)\s*([_\*]{0,2})\s*([\u4e00-\u9fa5]+?)/
+---
+# repeat above rule again, but with /\s+?/
+'expected': /\1\2\3/
+'pattern': /([\u4e00-\u9fa5]+?)\s+?([_\*]{0,2})\s+?([\u4e00-\u9fa5]+?)/
+---
+# add space around links
+# 链接前后应该有空格 —— 这一条在纯英文排版中有意义，但中文或者中英混排中并不好看……
+# 'expected': / [\1](\2) /
+# 'pattern': /\s*\[(.*?)\]\((.*?)\)\s*/
+# ---
+# add space before curly quotes
+'expected': / \1/
+'pattern': /\s*([“‘])/
+---
+# strait single quote among ascii chars
+'expected': /\1'\2/
+'pattern': /([a-zA-Z0-9]+)[’]\s*([a-zA-Z]+)/
+---
+# spaces around `~`
+'expected': / ~ /
+'pattern': /\s*[~～]![\\]\s*/
+---
+# remove space around Chinese full-width punctuation
+'expected': /\1/
+'pattern': /\s*([。，、？！：；（）《》・])\s*/
+
