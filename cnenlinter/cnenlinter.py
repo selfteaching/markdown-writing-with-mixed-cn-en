@@ -15,8 +15,6 @@ except FileExistsError:
     pass 
 except OSError:
     print(f"Creation of linted directory {linted_path} failed.")
-else:
-    print(f"linted directory {linted_path} created.")
 
 re_dict = {
     'a': 're.A',
@@ -117,6 +115,7 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
                         logfile.writelines(log + '\n')
                     else:
                         lines_linted.append(temp)
+                        logfile.writelines('fix not accepted!\n')
                 else:
                     lines_linted.append(linted.rstrip())
                     logfile.writelines(log + '\n')
