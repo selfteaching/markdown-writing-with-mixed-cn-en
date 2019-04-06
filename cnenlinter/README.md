@@ -14,7 +14,11 @@
 
 ```bash
 git clone https://github.com/selfteaching/markdown-writing-with-mixed-cn-en
-cd markdown-writing-with-mixed-cn-en
+cd markdown-writing-with-mixed-cn-en/cnenlinter
+pip install virtualenv
+virtualenv venv
+. venv/bin/activate
+
 pip install -e .
 ```
 
