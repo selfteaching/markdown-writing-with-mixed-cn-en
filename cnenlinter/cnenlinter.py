@@ -68,6 +68,7 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
         rules = list(yaml.safe_load_all(rf.read()))
 
     log = ''
+    logfile = open(log_file, 'w')
 
     for filename in files:
 
@@ -78,8 +79,6 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
             text = pattern.sub('\n\n', text)
             lines = text.splitlines()
         f.close
-
-        logfile = open(log_file, 'w')
 
         lines_linted = []
 
@@ -104,20 +103,23 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
                     if pattern.findall(linted):
                         linted = pattern.sub(rule['expected'].strip('/'), linted)
 
-            if temp != linted.rstrip(): 
-                log = f'\n\n{filename} (line {lines.index(line) + 1}):\n{line}\n=>\n{linted}'
-                print(log)
+                if temp != linted.rstrip(): 
+                    log = f'\n\n{filename} (line {lines.index(line) + 1}):\n{line}\n=>\n{linted}'
+                    print(log)
 
-                if verbose:
-                    permission = input('fix this one? "y" or "no"? ')
-                    if permission == 'y':
-                        lines_linted.append(linted.rstrip())
-                        logfile.writelines(log + '\n')
-                    elif permission == 'n':
-                        logfile.writelines(log + '\nfix not accepted!\n')
-                else:
-                    lines_linted.append(linted.rstrip())
-                    logfile.writelines(log + '\n')
+                    if verbose:
+                        valid_permission = True
+                        while valid_permission:
+                            permission = input('fix this one? "y" or "no"? ')
+                            if permission in 'yn':
+                                if permission == 'y':
+                                    logfile.writelines(log + '\n')
+                                elif permission == 'n':
+                                    linted = temp
+                                    logfile.writelines(log + '\nCAUTION: This fix not accepted!\n')
+                                valid_permission = False
+                            else:
+                                valid_permission = True
             
             lines_linted.append(linted)
 

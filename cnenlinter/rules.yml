@@ -2,28 +2,28 @@
 # conver half-width puntuations in Chinese sentences to full-width ones.
 # 中文前后的半角标点符号字符更换为全角标点符号
 'expected': /\1，/
-'pattern': /([\x00-\x7F”’])\,/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\,/
 ---
 'expected': /\1。/
-'pattern': /([\x00-\x7F”’])\./
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\./
 ---
 'expected': /\1：/
-'pattern': /([\x00-\x7F”’])\:/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\:/
 ---
 'expected': /\1；/
-'pattern': /([\x00-\x7F”’])\;/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\;/
 ---
 'expected': /\1？/
-'pattern': /([\x00-\x7F”’])\?/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\?/
 ---
 'expected': /\1！/
-'pattern': /([\x00-\x7F”’])\!/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\!/
 ---
 'expected': /\1）/
-'pattern': /([\x00-\x7F”’])\s*[\)）]/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\s*[\)）]/
 ---
 'expected': /（\1/
-'pattern': /[（\(]\s*([\x00-\x7F‘“])/
+'pattern': /[（\(]\s*([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD‘“])/
 ---
 # strait single quote among ascii chars
 'expected': /\1'\2/
@@ -53,20 +53,20 @@
 'pattern': /\s*(`)(.*?)\1\s*![。，、？！：；（）《》・]/
 ---
 # spaces around ascii among Chinese characters
-# 中文字符 /[\x00-\x7F]/ 之间的数字、英文单词前后要有空格
+# 中文字符 /[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]/ 之间的数字、英文单词前后要有空格
 # regex 中包含 `_\*` 是为了同时可以匹配到 markdown 标记，`**` 和 `__`
 'expected': /\1 \2/
-'pattern': /([a-zA-Z0-9%‰‱]+[_\*]{1,2})\s*([_\*]{1,2}[\x00-\x7F]+?)/        
+'pattern': /([a-zA-Z0-9%‰‱]+[_\*]{1,2})\s*([_\*]{1,2}[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)/        
 ---
 # 作用同上，只是前后顺序不一样
 'expected': /\1 \2/
-'pattern': /([\x00-\x7F]+?[_\*]{1,2})\s*([_\*]{1,2}[a-zA-Z0-9+\-$¥]+)/        
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?[_\*]{1,2})\s*([_\*]{1,2}[a-zA-Z0-9+\-$¥]+)/        
 ---
 # add space after `……` 
 # 有争议：从美观上来看，省略号之前有空格并不好看……
 # 以下的规则是：省略号前面没有空格，它后面有一个空格。
 'expected': /\1…… /
-'pattern': /([\x00-\x7F]+?)\s*([…]{1,2}|[\.。]{2,3})\s*/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)\s*([…]{1,2}|[\.。]{2,3})\s*/
 ---
 # add space around `——` 
 'expected': / —— /
@@ -82,7 +82,7 @@
 ---  
 # no space between `……` and curly quotes
 'expected': /\1…/
-'pattern': /([‘“])\s+…/
+'pattern': /([‘“’”])\s+…/
 ---  
 # use Katakana Middle Dot
 'expected': /・/
@@ -111,13 +111,13 @@
 # (?<!^#) negative lookabehind, doesn't include /^#/
 # ... to allow space between Chinese characters in Title
 # 'expected': /\1\2/
-# 'pattern': /(?<!^#)([_\*]{0,2}[\x00-\x7F]+?[_\*]{0,2})\s+([_\*]{0,2}[\x00-\x7F]+?[_\*]{0,2})/
+# 'pattern': /(?<!^#)([_\*]{0,2}[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?[_\*]{0,2})\s+([_\*]{0,2}[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?[_\*]{0,2})/
 'expected': /\1\2\3/
-'pattern': /([\x00-\x7F]+?)\s*([_\*]{0,2})\s*([\x00-\x7F]+?)/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)\s*([_\*]{0,2})\s*([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)/
 ---
 # repeat above rule again, but with /\s+?/
 'expected': /\1\2\3/
-'pattern': /([\x00-\x7F]+?)\s+?([_\*]{0,2})\s+?([\x00-\x7F]+?)/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)\s+?([_\*]{0,2})\s+?([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)/
 ---
 # add space around links
 # 链接前后应该有空格 —— 这一条在纯英文排版中有意义，但中文或者中英混排中并不好看……
