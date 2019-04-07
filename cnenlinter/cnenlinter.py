@@ -111,12 +111,12 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
                         valid_permission = True
                         while valid_permission:
                             permission = input('fix this one? "y" or "no"? ')
-                            if permission in 'yn':
+                            if permission == 'y' or permission == 'n':
                                 if permission == 'y':
-                                    logfile.writelines(log + '\n')
+                                    logfile.writelines(log + '\n**ACCEPTED!**\n')
                                 elif permission == 'n':
                                     linted = temp
-                                    logfile.writelines(log + '\nCAUTION: This fix not accepted!\n')
+                                    logfile.writelines(log + '\n**REJECTED!**\n')
                                 valid_permission = False
                             else:
                                 valid_permission = True
