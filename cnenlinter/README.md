@@ -62,32 +62,32 @@ cnenlinter -f False *.md
 每个规则由 `---` 作为起始，而后一个 `expected` 再加上一个 `pattern`，比如：
 
 ```yaml
-    ---
-    # conver half-width puntuations in Chinese sentences to full-width ones.
-    # 中文前后的半角标点符号字符更换为全角标点符号
-    'expected': /\1，/
-    'pattern': /([\u4e00-\u9fa5”’])\,/
-    ---
-    'expected': /\1。/
-    'pattern': /([\u4e00-\u9fa5”’])\./
-    ---
-    'expected': /\1：/
-    'pattern': /([\u4e00-\u9fa5”’])\:/
-    ---
-    'expected': /\1；/
-    'pattern': /([\u4e00-\u9fa5”’])\;/
-    ---
-    'expected': /\1？/
-    'pattern': /([\u4e00-\u9fa5”’])\?/
-    ---
-    'expected': /\1！/
-    'pattern': /([\u4e00-\u9fa5”’])\!/
-    ---
-    'expected': /\1）/
-    'pattern': /([\u4e00-\u9fa5”’])\s*[\)）]/
-    ---
-    'expected': /（\1/
-    'pattern': /[（\(]\s*([\u4e00-\u9fa5‘“])/
+---
+# conver half-width puntuations in Chinese sentences to full-width ones.
+# 中文前后的半角标点符号字符更换为全角标点符号
+'expected': /\1，/
+'pattern': /([\x00-\x7F”’])\,/
+---
+'expected': /\1。/
+'pattern': /([\x00-\x7F”’])\./
+---
+'expected': /\1：/
+'pattern': /([\x00-\x7F”’])\:/
+---
+'expected': /\1；/
+'pattern': /([\x00-\x7F”’])\;/
+---
+'expected': /\1？/
+'pattern': /([\x00-\x7F”’])\?/
+---
+'expected': /\1！/
+'pattern': /([\x00-\x7F”’])\!/
+---
+'expected': /\1）/
+'pattern': /([\x00-\x7F”’])\s*[\)）]/
+---
+'expected': /（\1/
+'pattern': /[（\(]\s*([\x00-\x7F‘“])/
 ```
 
 正则表达式前后，使用 `/` 标记。
