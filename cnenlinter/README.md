@@ -49,4 +49,55 @@ cnenlinter -v False *.md
 cnenlinter -f False *.md
 ```
 
+在处理单个文件的时候，我通常会使用 `cnenlinter <file>`，因为即便是总监不小心操作出错（比如，在不应该的地方顺手敲了 `y`），也可以通过 `log.txt` 文件查找哪里出了问题。
+
+但是，在处理多个文件的时候，我会使用 `cnenlinter -f False *.md`，即，修改过的文件将另存在 `linted` 目录中。
+
+## 关于规则，以及 rules.yml
+
+`rules.yml` 文件里保存着搜索（`pattern`）和替换（`expected`）的正则表达式。
+
+每个规则由 `---` 作为起始，而后一个 `expected` 再加上一个 `pattern`，比如：
+
+```yaml
+---
+    # conver half-width puntuations in Chinese sentences to full-width ones.
+    # 中文前后的半角标点符号字符更换为全角标点符号
+    'expected': /\1，/
+    'pattern': /([\u4e00-\u9fa5”’])\,/
+    ---
+    'expected': /\1。/
+    'pattern': /([\u4e00-\u9fa5”’])\./
+    ---
+    'expected': /\1：/
+    'pattern': /([\u4e00-\u9fa5”’])\:/
+    ---
+    'expected': /\1；/
+    'pattern': /([\u4e00-\u9fa5”’])\;/
+    ---
+    'expected': /\1？/
+    'pattern': /([\u4e00-\u9fa5”’])\?/
+    ---
+    'expected': /\1！/
+    'pattern': /([\u4e00-\u9fa5”’])\!/
+    ---
+    'expected': /\1）/
+    'pattern': /([\u4e00-\u9fa5”’])\s*[\)）]/
+    ---
+    'expected': /（\1/
+    'pattern': /[（\(]\s*([\u4e00-\u9fa5‘“])/
+```
+
+正则表达式前后，使用 `/` 标记。
+
+在 `pattern` 中允许使用三个 `flag`：`a`、`i` 和 `l` —— 分别对应着 `re.A`、`re.I` 和 `re.L`：
+
+```
+/<regex>/<flag>
+```
+
+在 `expected` 中，使用 `\1` `\2`... 来替换 `pattern` 中的捕获。
+
+## 注意
+
 此程序只在 Mac OSX 环境下测试运行过。
