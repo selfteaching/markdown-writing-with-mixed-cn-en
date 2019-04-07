@@ -2,28 +2,28 @@
 # conver half-width puntuations in Chinese sentences to full-width ones.
 # 中文前后的半角标点符号字符更换为全角标点符号
 'expected': /\1，/
-'pattern': /([\u4e00-\u9fa5”’])\,/
+'pattern': /([\x00-\x7F”’])\,/
 ---
 'expected': /\1。/
-'pattern': /([\u4e00-\u9fa5”’])\./
+'pattern': /([\x00-\x7F”’])\./
 ---
 'expected': /\1：/
-'pattern': /([\u4e00-\u9fa5”’])\:/
+'pattern': /([\x00-\x7F”’])\:/
 ---
 'expected': /\1；/
-'pattern': /([\u4e00-\u9fa5”’])\;/
+'pattern': /([\x00-\x7F”’])\;/
 ---
 'expected': /\1？/
-'pattern': /([\u4e00-\u9fa5”’])\?/
+'pattern': /([\x00-\x7F”’])\?/
 ---
 'expected': /\1！/
-'pattern': /([\u4e00-\u9fa5”’])\!/
+'pattern': /([\x00-\x7F”’])\!/
 ---
 'expected': /\1）/
-'pattern': /([\u4e00-\u9fa5”’])\s*[\)）]/
+'pattern': /([\x00-\x7F”’])\s*[\)）]/
 ---
 'expected': /（\1/
-'pattern': /[（\(]\s*([\u4e00-\u9fa5‘“])/
+'pattern': /[（\(]\s*([\x00-\x7F‘“])/
 ---
 # add space after curly quotes
 'expected': /\1 /
@@ -45,20 +45,20 @@
 'pattern': /\s*(`)(.*?)\1\s*![。，、？！：；（）《》・]/
 ---
 # spaces around ascii among Chinese characters
-# 中文字符 /[\u4e00-\u9fa5]/ 之间的数字、英文单词前后要有空格
+# 中文字符 /[\x00-\x7F]/ 之间的数字、英文单词前后要有空格
 # regex 中包含 `_\*` 是为了同时可以匹配到 markdown 标记，`**` 和 `__`
 'expected': /\1 \2/
-'pattern': /([a-zA-Z0-9%‰‱]+[_\*]{1,2})\s*([_\*]{1,2}[\u4e00-\u9fa5]+?)/        
+'pattern': /([a-zA-Z0-9%‰‱]+[_\*]{1,2})\s*([_\*]{1,2}[\x00-\x7F]+?)/        
 ---
 # 作用同上，只是前后顺序不一样
 'expected': /\1 \2/
-'pattern': /([\u4e00-\u9fa5]+?[_\*]{1,2})\s*([_\*]{1,2}[a-zA-Z0-9+\-$¥]+)/        
+'pattern': /([\x00-\x7F]+?[_\*]{1,2})\s*([_\*]{1,2}[a-zA-Z0-9+\-$¥]+)/        
 ---
 # add space around `……` 
 # 有争议：从美观上来看，省略号之前有空格并不好看……
 # 以下的规则是：省略号前面没有空格，它后面有一个空格。
 'expected': /\1…… /
-'pattern': /([\u4e00-\u9fa5]+?)\s*([…]{1,2}|[\.。]{2,3})\s*/
+'pattern': /([\x00-\x7F]+?)\s*([…]{1,2}|[\.。]{2,3})\s*/
 ---
 # add space around `——` 
 'expected': / —— /
@@ -83,7 +83,7 @@
 # remove space between plus/minus sign and digits
 # 正负号、货币符号与数字之间不应有空格
 'expected': /\1\2/
-'pattern': /\u4e00-\u9fa5]+?.*([+\-¥$])\s+([0-9]+)/
+'pattern': /\x00-\x7F]+?.*([+\-¥$])\s+([0-9]+)/
 ---
 # remove space between digits and common units
 # 数字与常用计量单位之间不应该有空格
@@ -103,13 +103,13 @@
 # (?<!^#) negative lookabehind, doesn't include /^#/
 # ... to allow space between Chinese characters in Title
 # 'expected': /\1\2/
-# 'pattern': /(?<!^#)([_\*]{0,2}[\u4e00-\u9fa5]+?[_\*]{0,2})\s+([_\*]{0,2}[\u4e00-\u9fa5]+?[_\*]{0,2})/
+# 'pattern': /(?<!^#)([_\*]{0,2}[\x00-\x7F]+?[_\*]{0,2})\s+([_\*]{0,2}[\x00-\x7F]+?[_\*]{0,2})/
 'expected': /\1\2\3/
-'pattern': /([\u4e00-\u9fa5]+?)\s*([_\*]{0,2})\s*([\u4e00-\u9fa5]+?)/
+'pattern': /([\x00-\x7F]+?)\s*([_\*]{0,2})\s*([\x00-\x7F]+?)/
 ---
 # repeat above rule again, but with /\s+?/
 'expected': /\1\2\3/
-'pattern': /([\u4e00-\u9fa5]+?)\s+?([_\*]{0,2})\s+?([\u4e00-\u9fa5]+?)/
+'pattern': /([\x00-\x7F]+?)\s+?([_\*]{0,2})\s+?([\x00-\x7F]+?)/
 ---
 # add space around links
 # 链接前后应该有空格 —— 这一条在纯英文排版中有意义，但中文或者中英混排中并不好看……

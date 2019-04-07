@@ -114,7 +114,6 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
                         lines_linted.append(linted.rstrip())
                         logfile.writelines(log + '\n')
                     elif permission == 'n':
-                        lines_linted.append(temp)
                         logfile.writelines(log + '\nfix not accepted!\n')
                 else:
                     lines_linted.append(linted.rstrip())

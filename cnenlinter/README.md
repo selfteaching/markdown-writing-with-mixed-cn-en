@@ -60,7 +60,7 @@ cnenlinter -f False *.md
 每个规则由 `---` 作为起始，而后一个 `expected` 再加上一个 `pattern`，比如：
 
 ```yaml
----
+    ---
     # conver half-width puntuations in Chinese sentences to full-width ones.
     # 中文前后的半角标点符号字符更换为全角标点符号
     'expected': /\1，/
