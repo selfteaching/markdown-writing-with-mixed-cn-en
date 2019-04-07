@@ -39,8 +39,10 @@ Options:
 ```
 
 ## 最基本命令
+
 ```bash
 cnenlinter *.md
+```
 
 也可以通过添加参数关闭 `verbose` 和 `fix-directly` 模式
 
