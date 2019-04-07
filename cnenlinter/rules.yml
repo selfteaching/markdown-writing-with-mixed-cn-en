@@ -25,9 +25,17 @@
 'expected': /（\1/
 'pattern': /[（\(]\s*([\x00-\x7F‘“])/
 ---
+# strait single quote among ascii chars
+'expected': /\1'\2/
+'pattern': /([a-zA-Z0-9]+)’([a-zA-Z]+)/
+---
 # add space after curly quotes
 'expected': /\1 /
 'pattern': /([’”])\s*/
+---
+# add space before curly quotes
+'expected': / \1/
+'pattern': /\s*([“‘])/
 ---
 # remove formost space due to previous rule on curly quotes
 'expected': /\1/
@@ -54,7 +62,7 @@
 'expected': /\1 \2/
 'pattern': /([\x00-\x7F]+?[_\*]{1,2})\s*([_\*]{1,2}[a-zA-Z0-9+\-$¥]+)/        
 ---
-# add space around `……` 
+# add space after `……` 
 # 有争议：从美观上来看，省略号之前有空格并不好看……
 # 以下的规则是：省略号前面没有空格，它后面有一个空格。
 'expected': /\1…… /
@@ -65,7 +73,7 @@
 'pattern': /\s*([—]{1,2})\s*/
 ---
 # no leading space when `——` and `……` ahead of the line
-'expected': /——/
+'expected': /\1/
 'pattern': /^\s*([—…]{1,2})/
 ---  
 # no space between `……` and curly quotes
@@ -74,7 +82,7 @@
 ---  
 # no space between `……` and curly quotes
 'expected': /\1…/
-'pattern': /([’”])\s+…/
+'pattern': /([‘“])\s+…/
 ---  
 # use Katakana Middle Dot
 'expected': /・/
@@ -116,14 +124,6 @@
 # 'expected': / [\1](\2) /
 # 'pattern': /\s*\[(.*?)\]\((.*?)\)\s*/
 # ---
-# add space before curly quotes
-'expected': / \1/
-'pattern': /\s*([“‘])/
----
-# strait single quote among ascii chars
-'expected': /\1'\2/
-'pattern': /([a-zA-Z0-9]+)[’]\s*([a-zA-Z]+)/
----
 # spaces around `~`
 'expected': / ~ /
 'pattern': /\s*[~～]![\\]\s*/
