@@ -120,6 +120,8 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
                                 valid_permission = False
                             else:
                                 valid_permission = True
+                    else:
+                        logfile.writelines(log + '\n**ACCEPTED!**\n')
             
             lines_linted.append(linted)
 
