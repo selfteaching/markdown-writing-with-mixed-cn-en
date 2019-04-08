@@ -38,7 +38,7 @@ Options:
   --help                      Show this message and exit.
 ```
 
-## 最基本命令
+## 基本命令
 
 ```bash
 cnenlinter *.md
@@ -49,6 +49,13 @@ cnenlinter *.md
 ```bash
 cnenlinter -v False *.md
 cnenlinter -f False *.md
+```
+
+还可以指定规则文件及其存放的目录：
+
+```bash
+cnenlinter -c <path-of-rules-file> -r <rules-file-name> -v False -f False *.md
+# 随后可以打开 log.txt 文件查看可修订记录
 ```
 
 在处理单个文件的时候，我通常会使用 `cnenlinter <file>`，因为即便是总监不小心操作出错（比如，在不应该的地方顺手敲了 `y`），也可以通过 `log.txt` 文件查找哪里出了问题。
