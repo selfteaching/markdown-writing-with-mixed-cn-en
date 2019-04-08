@@ -73,28 +73,28 @@ cnenlinter -c <path-of-rules-file> -r <rules-file-name> -v False -f False *.md
 # conver half-width puntuations in Chinese sentences to full-width ones.
 # 中文前后的半角标点符号字符更换为全角标点符号
 'expected': /\1，/
-'pattern': /([\x00-\x7F”’])\,/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\,/
 ---
 'expected': /\1。/
-'pattern': /([\x00-\x7F”’])\./
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\./
 ---
 'expected': /\1：/
-'pattern': /([\x00-\x7F”’])\:/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\:/
 ---
 'expected': /\1；/
-'pattern': /([\x00-\x7F”’])\;/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\;/
 ---
 'expected': /\1？/
-'pattern': /([\x00-\x7F”’])\?/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\?/
 ---
 'expected': /\1！/
-'pattern': /([\x00-\x7F”’])\!/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\!/
 ---
 'expected': /\1）/
-'pattern': /([\x00-\x7F”’])\s*[\)）]/
+'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD”’])\s*[\)）]/
 ---
 'expected': /（\1/
-'pattern': /[（\(]\s*([\x00-\x7F‘“])/
+'pattern': /[（\(]\s*([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD‘“])/
 ```
 
 正则表达式前后，使用 `/` 标记。
