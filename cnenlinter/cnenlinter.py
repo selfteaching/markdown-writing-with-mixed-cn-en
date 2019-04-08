@@ -47,6 +47,13 @@ re_dict = {
     help='Fix file(s) directly, rather than save to "/linted" directory. Default: True.'
     )
 @click.option(
+    '-r',
+    '--rules-file-name',
+    'rules_file_name',
+    default='rules.yml',
+    help='Specify rules file name. Default: rules.yml'
+    )       
+@click.option(
     '-v',
     '--verbose',
     'verbose',
@@ -60,9 +67,9 @@ re_dict = {
     type=click.Path()
     )
 
-def cnenlinter(config_path, log_file, fix_directly, verbose, files):
+def cnenlinter(config_path, log_file, fix_directly, rules_file_name, verbose, files):
 
-    rules_file = os.path.join(config_path, 'rules.yml')
+    rules_file = os.path.join(config_path, rules_file_name)
 
     with open(os.path.join(config_path, rules_file), 'r') as rf:
         rules = list(yaml.safe_load_all(rf.read()))
@@ -123,7 +130,7 @@ def cnenlinter(config_path, log_file, fix_directly, verbose, files):
                     else:
                         logfile.writelines(log + '\n**ACCEPTED!**\n')
             
-            lines_linted.append(linted)
+            lines_linted.append(linted.rstrip())
 
         if fix_directly:
             file_to_save = filename
