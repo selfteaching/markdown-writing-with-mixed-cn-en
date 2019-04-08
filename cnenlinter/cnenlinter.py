@@ -117,7 +117,7 @@ def cnenlinter(config_path, log_file, fix_directly, rules_file_name, verbose, fi
                     if verbose:
                         valid_permission = True
                         while valid_permission:
-                            permission = input('fix this one? "y" or "no"? ')
+                            permission = input('fix this one? "y" or "n"? ')
                             if permission == 'y' or permission == 'n':
                                 if permission == 'y':
                                     logfile.writelines(log + '\n**ACCEPTED!**\n')
