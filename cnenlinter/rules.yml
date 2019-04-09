@@ -91,7 +91,7 @@
 # remove space between plus/minus sign and digits
 # 正负号、货币符号与数字之间不应有空格
 'expected': /\1\2/
-'pattern': /\x00-\x7F]+?.*([+\-¥$])\s+([0-9]+)/
+'pattern': /[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD].*?([+\-¥$])\s+([0-9]+)/
 ---
 # remove space between digits and common units
 # 数字与常用计量单位之间不应该有空格
@@ -111,7 +111,8 @@
 # (?<!^#) negative lookabehind, doesn't include /^#/
 # ... to allow space between Chinese characters in Title
 # 'expected': /\1\2/
-# 'pattern': /(?<!^#)([_\*]{0,2}[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?[_\*]{0,2})\s+([_\*]{0,2}[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?[_\*]{0,2})/
+# 'pattern': /(?<!^#{1,6}.*?)([_\*]{0,2}[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?[_\*]{0,2})\s+([_\*]{0,2}[\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?[_\*]{0,2})/
+# ---
 'expected': /\1\2\3/
 'pattern': /([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)\s*([_\*]{0,2})\s*([\u2E80-\u2FD5\u3190-\u319f\u3400-\u4DBF\u4E00-\u9FCC\uF900-\uFAAD]+?)/
 ---
