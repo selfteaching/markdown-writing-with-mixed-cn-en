@@ -31,16 +31,12 @@
 ---
 # add space after curly quotes
 'expected': /\1 /
-'pattern': /([’”])\s*/
+'pattern': /([’”]) *(?![！？，。：；、）])/
 ---
 # add space before curly quotes
 'expected': / \1/
-'pattern': /\s*([“‘])/
+'pattern': /(?<!^) *([“‘])/
 ---
-# remove formost space due to previous rule on curly quotes
-'expected': /\1/
-'pattern': /^\s+([‘“])/
----  
 # fixing title to fit GFM
 # Github 上，/#+[0-9]+/ 会被自动转换成 issue 链接；
 # 所以，标题中的 `#` 之后必须有一个空格
