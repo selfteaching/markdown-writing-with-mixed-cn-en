@@ -31,11 +31,11 @@
 ---
 # add space after curly quotes
 'expected': /\1 /
-'pattern': /([’”]) *(?![！？，。：；、）])/
+'pattern': /([’”][_\*]{0,2}) *(?![！？，。：；、）])/
 ---
 # add space before curly quotes
 'expected': / \1/
-'pattern': /(?<!^) *([“‘])/
+'pattern': /(?<!^) *([_\*]{0,2}[“‘])/
 ---
 # fixing title to fit GFM
 # Github 上，/#+[0-9]+/ 会被自动转换成 issue 链接；
