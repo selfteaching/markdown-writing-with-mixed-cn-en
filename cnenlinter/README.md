@@ -34,6 +34,7 @@ Options:
   -l, --log-file TEXT         Specify file name for log, default: "log.txt".
   -f, --fix-directly BOOLEAN  Fix file(s) directly, rather than save to
                               "/linted" directory. Default: True.
+  -r, --rules-file-name TEXT  Specify rules file name. Default: rules.yml
   -v, --verbose BOOLEAN       Ask permission before fix. Default: True.
   --help                      Show this message and exit.
 ```
