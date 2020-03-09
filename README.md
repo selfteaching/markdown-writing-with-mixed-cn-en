@@ -126,7 +126,7 @@ selfteaching.com 上的所有文章，首选 [CC-BY-NC-ND](<https://creativecomm
 ## 必读教程
 
 1. Github 的 Markdown 教程：[Github: Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
-2. 微软的写作风格指导：[Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)
+2. 微软的写作风格指导：[Microsoft Writing Style Guide](https://docs.microsoft.com/en-us/azure/devops/project/wiki/markdown-guidance)
 3. Markdown 格式检查工具：[MarkdownLint](https://github.com/DavidAnson/markdownlint) —— 虽然它本身是 lint 工具，但它的文档中包含很多 Markdown 格式上的优化要求。
 
 ## 推荐使用的 Markdown 编辑器
